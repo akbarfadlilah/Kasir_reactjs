@@ -23,12 +23,18 @@ export default class TotalBayar extends Component {
             return result + item.total_harga;
         }, 0);
         return (
-            <div className='fixed-bottom'>
+            <>
+            {/*Web */}
+            <div className='fixed-bottom d-none d-md-block'>
                 <Row>
-                    <Col md={{ span: 2, offset: 10 }} className='px-4'>
-                        <h6>Total Harga : {" "}<strong className='float-right ms-4'>Rp. {numberWithCommas(totalBayar)}</strong></h6>
+                    <Col md={{ span: 3, offset: 9 }} className="px-4">
+                        <h5>Total Harga : {" "}
+                        <strong className="float-right mr-2">
+                            Rp. {numberWithCommas(totalBayar)}
+                            </strong>
+                            </h5>
                         <div className='d-grid gap-4'>
-                            <Button variant='primary' size='md' className='mt-2 mb-2 mr-2' 
+                            <Button variant='primary' size='lg' className='mt-2 mb-2 mr-2' 
                             onClick={() => this.submitTotalBayar(totalBayar)}
                             as={Link} to='/sukses'
                             >
@@ -38,6 +44,27 @@ export default class TotalBayar extends Component {
                     </Col>
                 </Row>
             </div>
+            {/*Mobile */}
+            <div className='s-sm-block d-md-none'>
+                <Row>
+                    <Col md={{ span: 3, offset: 9 }} className="px-4">
+                        <h5>Total Harga : {" "}
+                        <strong className="float-right mr-2">
+                            Rp. {numberWithCommas(totalBayar)}
+                            </strong>
+                            </h5>
+                        <div className='d-grid gap-4'>
+                            <Button variant='primary' size='lg' className='mt-2 mb-2 mr-2' 
+                            onClick={() => this.submitTotalBayar(totalBayar)}
+                            as={Link} to='/sukses'
+                            >
+                                <FontAwesomeIcon icon={faShoppingCart} className="me-2" /> <strong>Bayar</strong>
+                            </Button>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+            </>
         )
     }
 }
